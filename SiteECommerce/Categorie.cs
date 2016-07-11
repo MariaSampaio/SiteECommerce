@@ -1,0 +1,17 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SiteECommerce
+{
+    public class Categorie
+    {
+        public int IdCategorie { get; set; }
+        public string NomCategorie { get; set; }
+
+        public virtual ICollection<Produit> Produits { get; set; }
+
+    }
+}
