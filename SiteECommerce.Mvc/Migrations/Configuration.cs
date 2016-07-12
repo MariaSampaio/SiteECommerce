@@ -27,19 +27,17 @@ namespace SiteECommerce.Mvc.Migrations
             //    );
             //
 
-            context.Marques.AddOrUpdate(
-               new Metier.Marque { IdMarque = 1, NomMarque = "Dop" },
-               new Metier.Marque { IdMarque = 2, NomMarque = "L'oreal" },
-               new Metier.Marque { IdMarque = 3, NomMarque = "Colgate" }
-               );
+            var dop = new Metier.Marque { NomMarque = "Dop" };
+            var oreal = new Metier.Marque { NomMarque = "L'oreal" };
+            var colgate = new Metier.Marque { NomMarque = "Colgate" };
+            context.Marques.AddOrUpdate(m => m.NomMarque, dop, oreal, colgate);
+
+            context.Produits.AddOrUpdate( p => p.NomProduit,
+            new Metier.Produit { NomProduit = "Savon", ImgProduit = "img", PrixProduit = 15, DescriptionProduit = "naturel", Marque = dop },
+            new Metier.Produit { NomProduit = "Shampoing", ImgProduit = "img", PrixProduit = 12, DescriptionProduit = "chimique", Marque = dop },
+            new Metier.Produit { NomProduit = "Gel Douche", ImgProduit = "img", PrixProduit = 16, DescriptionProduit = "chimique", Marque = oreal });
 
 
-            context.Produits.AddOrUpdate(
-            new Metier.Produit { IdProduit = 1, NomProduit = "Savon", ImgProduit = "img", PrixProduit = 15, DescriptionProduit = "naturel", MarqueId = 1 },
-            new Metier.Produit { IdProduit = 2, NomProduit = "Shampoing", ImgProduit = "img", PrixProduit = 12, DescriptionProduit = "naturel", MarqueId = 2 },
-            new Metier.Produit { IdProduit = 3, NomProduit = "Gel Douche", ImgProduit = "img", PrixProduit = 16, DescriptionProduit = "naturel", MarqueId = 1 });
-
-           
         }
     }
 }
