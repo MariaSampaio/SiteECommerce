@@ -13,6 +13,9 @@ namespace SiteECommerce.Metier
         public int IdMarque { get; set; }
         public string NomMarque { get; set; }
 
+
         public virtual ICollection<Produit> Produits { get; set; }
     }
-}
+        
+    }
+

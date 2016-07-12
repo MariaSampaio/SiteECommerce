@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SiteECommerce.Metier
 {
-    public class Produit
+    public class Produit : Marque
     {
         [Key]
         public int IdProduit { get; set; }
