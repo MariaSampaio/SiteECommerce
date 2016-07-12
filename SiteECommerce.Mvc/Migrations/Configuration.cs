@@ -27,12 +27,19 @@ namespace SiteECommerce.Mvc.Migrations
             //    );
             //
 
+            context.Marques.AddOrUpdate(
+               new Metier.Marque { IdMarque = 1, NomMarque = "Dop" },
+               new Metier.Marque { IdMarque = 2, NomMarque = "L'oreal" },
+               new Metier.Marque { IdMarque = 3, NomMarque = "Colgate" }
+               );
 
 
-            //context.Produits.AddOrUpdate(
-            //    new Metier.Produit { IdProduit = 1, NomProduit = "Savon", ImgProduit = "img", PrixProduit = 15, DescriptionProduit = "naturel", MarqueId = 1 });
+            context.Produits.AddOrUpdate(
+            new Metier.Produit { IdProduit = 1, NomProduit = "Savon", ImgProduit = "img", PrixProduit = 15, DescriptionProduit = "naturel", MarqueId = 1 },
+            new Metier.Produit { IdProduit = 2, NomProduit = "Shampoing", ImgProduit = "img", PrixProduit = 12, DescriptionProduit = "naturel", MarqueId = 2 },
+            new Metier.Produit { IdProduit = 3, NomProduit = "Gel Douche", ImgProduit = "img", PrixProduit = 16, DescriptionProduit = "naturel", MarqueId = 1 });
 
-
+           
         }
     }
 }
