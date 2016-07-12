@@ -31,6 +31,7 @@ namespace SiteECommerce.Mvc.Migrations
 
             //context.Produits.AddOrUpdate(
             //    new Metier.Produit { IdProduit = 1, NomProduit = "Savon", ImgProduit = "img", PrixProduit = 15, DescriptionProduit = "naturel", MarqueId = 1 });
+            
 
 
         }
