@@ -42,13 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Categorie.cs" />
-    <Compile Include="Client.cs" />
-    <Compile Include="Commande.cs" />
     <Compile Include="Marque.cs" />
-    <Compile Include="Paiment.cs" />
     <Compile Include="Produit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Stock.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
