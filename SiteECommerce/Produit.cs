@@ -26,5 +26,9 @@ namespace SiteECommerce.Metier
         public int CategorieId;
         public virtual Categorie Categorie { get; set; }
 
+        [ForeignKey("Fournisseur")]
+        public int Idfournisseur;
+        public virtual Fournisseur Fournisseurs { get; set; }
+
     }
 }
