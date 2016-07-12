@@ -22,9 +22,9 @@ namespace SiteECommerce.Metier
         public int MarqueId;
         public virtual Marque Marque { get; set; }
 
-        /*[ForeignKey("Categorie")]
+        [ForeignKey("Categorie")]
         public int CategorieId;
-        public virtual Categorie Categorie { get; set; }*/
+        public virtual Categorie Categorie { get; set; }
 
     }
 }
