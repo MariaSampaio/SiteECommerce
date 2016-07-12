@@ -163,6 +163,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MarquesController.cs" />
     <Compile Include="Controllers\ProduitsController.cs" />
     <Compile Include="DAL\SiteECommerceDbContext.cs" />
     <Compile Include="Global.asax.cs">
@@ -230,6 +231,11 @@
     <Content Include="Views\Produits\Details.cshtml" />
     <Content Include="Views\Produits\Edit.cshtml" />
     <Content Include="Views\Produits\Index.cshtml" />
+    <Content Include="Views\Marques\Create.cshtml" />
+    <Content Include="Views\Marques\Delete.cshtml" />
+    <Content Include="Views\Marques\Details.cshtml" />
+    <Content Include="Views\Marques\Edit.cshtml" />
+    <Content Include="Views\Marques\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
