@@ -11,115 +11,107 @@ using SiteECommerce.Metier;
 
 namespace SiteECommerce.Mvc.Controllers
 {
-    public class ProduitsController : Controller
+    public class ClientsController : Controller
     {
         private SiteECommerceDbContext db = new SiteECommerceDbContext();
 
-        // GET: Produits
+        // GET: Clients
         public ActionResult Index()
         {
-            return View(db.Produits.ToList());
+            return View(db.Clients.ToList());
         }
 
-        // GET: Produits/Details/5
+        // GET: Clients/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Produit produit = db.Produits.Find(id);
-            if (produit == null)
+            Client client = db.Clients.Find(id);
+            if (client == null)
             {
                 return HttpNotFound();
             }
-            return View(produit);
+            return View(client);
         }
 
-        // GET: Produits/Create
+        // GET: Clients/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Produits/Create
+        // POST: Clients/Create
         // Afin de déjouer les attaques par sur-validation, activez les propriétés spécifiques que vous voulez lier. Pour 
         // plus de détails, voir  http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdProduit,NomProduit,ImgProduit,PrixProduit,DescriptionProduit")] Produit produit)
+        public ActionResult Create([Bind(Include = "Id,Prenom,Nom,Email,AdresseLivraison,AdresseFacturation,Login,Password")] Client client)
         {
             if (ModelState.IsValid)
             {
-                db.Produits.Add(produit);
+                db.Clients.Add(client);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(produit);
+            return View(client);
         }
 
-        // GET: Produits/Edit/5
+        // GET: Clients/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Produit produit = db.Produits.Find(id);
-            CreateMarqueList(produit.Marque.IdMarque);
-            if (produit == null)
+            Client client = db.Clients.Find(id);
+            if (client == null)
             {
                 return HttpNotFound();
             }
-            return View(produit);
+            return View(client);
         }
 
-        private void CreateMarqueList(int? marqueId)
-        {
-            var marques = from m in db.Marques
-                          select m;
-            ViewBag.MarqueID = new SelectList(marques, "IdMarque", "NomMarque", marqueId.Value);
-        }
-
-        // POST: Produits/Edit/5
+        // POST: Clients/Edit/5
         // Afin de déjouer les attaques par sur-validation, activez les propriétés spécifiques que vous voulez lier. Pour 
         // plus de détails, voir  http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdProduit,NomProduit,ImgProduit,PrixProduit,DescriptionProduit, MarqueId")] Produit produit)
+        public ActionResult Edit([Bind(Include = "Id,Prenom,Nom,Email,AdresseLivraison,AdresseFacturation,Login,Password")] Client client)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(produit).State = EntityState.Modified;
+                db.Entry(client).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(produit);
+            return View(client);
         }
 
-        // GET: Produits/Delete/5
+        // GET: Clients/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Produit produit = db.Produits.Find(id);
-            if (produit == null)
+            Client client = db.Clients.Find(id);
+            if (client == null)
             {
                 return HttpNotFound();
             }
-            return View(produit);
+            return View(client);
         }
 
-        // POST: Produits/Delete/5
+        // POST: Clients/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Produit produit = db.Produits.Find(id);
-            db.Produits.Remove(produit);
+            Client client = db.Clients.Find(id);
+            db.Clients.Remove(client);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -17,7 +17,7 @@ namespace SiteECommerce.Metier
         public Client Clients { get; set; }
 
         [ForeignKey("Client")]
-        public int clientId { get; set; }
+        public int IdClient;
         public virtual Client Client { get; set; }
 
 

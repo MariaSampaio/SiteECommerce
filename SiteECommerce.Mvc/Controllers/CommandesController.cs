@@ -11,115 +11,107 @@ using SiteECommerce.Metier;
 
 namespace SiteECommerce.Mvc.Controllers
 {
-    public class ProduitsController : Controller
+    public class CommandesController : Controller
     {
         private SiteECommerceDbContext db = new SiteECommerceDbContext();
 
-        // GET: Produits
+        // GET: Commandes
         public ActionResult Index()
         {
-            return View(db.Produits.ToList());
+            return View(db.Commandes.ToList());
         }
 
-        // GET: Produits/Details/5
+        // GET: Commandes/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Produit produit = db.Produits.Find(id);
-            if (produit == null)
+            Commande commande = db.Commandes.Find(id);
+            if (commande == null)
             {
                 return HttpNotFound();
             }
-            return View(produit);
+            return View(commande);
         }
 
-        // GET: Produits/Create
+        // GET: Commandes/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Produits/Create
+        // POST: Commandes/Create
         // Afin de déjouer les attaques par sur-validation, activez les propriétés spécifiques que vous voulez lier. Pour 
         // plus de détails, voir  http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdProduit,NomProduit,ImgProduit,PrixProduit,DescriptionProduit")] Produit produit)
+        public ActionResult Create([Bind(Include = "Id,Quantite,prixTotal")] Commande commande)
         {
             if (ModelState.IsValid)
             {
-                db.Produits.Add(produit);
+                db.Commandes.Add(commande);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(produit);
+            return View(commande);
         }
 
-        // GET: Produits/Edit/5
+        // GET: Commandes/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Produit produit = db.Produits.Find(id);
-            CreateMarqueList(produit.Marque.IdMarque);
-            if (produit == null)
+            Commande commande = db.Commandes.Find(id);
+            if (commande == null)
             {
                 return HttpNotFound();
             }
-            return View(produit);
+            return View(commande);
         }
 
-        private void CreateMarqueList(int? marqueId)
-        {
-            var marques = from m in db.Marques
-                          select m;
-            ViewBag.MarqueID = new SelectList(marques, "IdMarque", "NomMarque", marqueId.Value);
-        }
-
-        // POST: Produits/Edit/5
+        // POST: Commandes/Edit/5
         // Afin de déjouer les attaques par sur-validation, activez les propriétés spécifiques que vous voulez lier. Pour 
         // plus de détails, voir  http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdProduit,NomProduit,ImgProduit,PrixProduit,DescriptionProduit, MarqueId")] Produit produit)
+        public ActionResult Edit([Bind(Include = "Id,Quantite,prixTotal")] Commande commande)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(produit).State = EntityState.Modified;
+                db.Entry(commande).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(produit);
+            return View(commande);
         }
 
-        // GET: Produits/Delete/5
+        // GET: Commandes/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Produit produit = db.Produits.Find(id);
-            if (produit == null)
+            Commande commande = db.Commandes.Find(id);
+            if (commande == null)
             {
                 return HttpNotFound();
             }
-            return View(produit);
+            return View(commande);
         }
 
-        // POST: Produits/Delete/5
+        // POST: Commandes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Produit produit = db.Produits.Find(id);
-            db.Produits.Remove(produit);
+            Commande commande = db.Commandes.Find(id);
+            db.Commandes.Remove(commande);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

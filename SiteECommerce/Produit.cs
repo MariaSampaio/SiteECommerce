@@ -17,19 +17,21 @@ namespace SiteECommerce.Metier
         public string ImgProduit { get; set; }
         public decimal PrixProduit { get; set; }
         public string DescriptionProduit { get; set; }
+        public int Quantite { get; set; }
 
-        [Required]
         [ForeignKey("Marque")]
-        public int IdMarque { get; set; }
+        public int IdMarque;
         public virtual Marque Marque { get; set; }
 
         [ForeignKey("Categorie")]
-        public int IdCategorie { get; set; }
+        public int IdCategorie;
         public virtual Categorie Categorie { get; set; }
 
         [ForeignKey("Fournisseur")]
-        public int Idfournisseur { get; set; }
+        public int Idfournisseur;
         public virtual Fournisseur Fournisseurs { get; set; }
+
+        public ICollection<Commentaire> Commentaire { get; set; }
 
     }
 }

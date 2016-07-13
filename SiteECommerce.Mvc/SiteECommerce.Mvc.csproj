@@ -159,7 +159,8 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\CategoriesController.cs" />
+    <Compile Include="Controllers\ClientsController.cs" />
+    <Compile Include="Controllers\CommandesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MarquesController.cs" />
     <Compile Include="Controllers\ProduitsController.cs" />
@@ -183,9 +184,9 @@
     <Compile Include="Migrations\201607121520324_migrationRectification.Designer.cs">
       <DependentUpon>201607121520324_migrationRectification.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201607130931393_configuration.cs" />
-    <Compile Include="Migrations\201607130931393_configuration.Designer.cs">
-      <DependentUpon>201607130931393_configuration.cs</DependentUpon>
+    <Compile Include="Migrations\201607130849082_qteProduit.cs" />
+    <Compile Include="Migrations\201607130849082_qteProduit.Designer.cs">
+      <DependentUpon>201607130849082_qteProduit.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -204,6 +205,9 @@
     <Content Include="Images\img3.jpg" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -254,11 +258,16 @@
     <Content Include="Views\Marques\Details.cshtml" />
     <Content Include="Views\Marques\Edit.cshtml" />
     <Content Include="Views\Marques\Index.cshtml" />
-    <Content Include="Views\Categories\Create.cshtml" />
-    <Content Include="Views\Categories\Delete.cshtml" />
-    <Content Include="Views\Categories\Details.cshtml" />
-    <Content Include="Views\Categories\Edit.cshtml" />
-    <Content Include="Views\Categories\Index.cshtml" />
+    <Content Include="Views\Clients\Create.cshtml" />
+    <Content Include="Views\Clients\Delete.cshtml" />
+    <Content Include="Views\Clients\Details.cshtml" />
+    <Content Include="Views\Clients\Edit.cshtml" />
+    <Content Include="Views\Clients\Index.cshtml" />
+    <Content Include="Views\Commandes\Create.cshtml" />
+    <Content Include="Views\Commandes\Delete.cshtml" />
+    <Content Include="Views\Commandes\Details.cshtml" />
+    <Content Include="Views\Commandes\Edit.cshtml" />
+    <Content Include="Views\Commandes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -287,8 +296,8 @@
     <EmbeddedResource Include="Migrations\201607121520324_migrationRectification.resx">
       <DependentUpon>201607121520324_migrationRectification.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201607130931393_configuration.resx">
-      <DependentUpon>201607130931393_configuration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201607130849082_qteProduit.resx">
+      <DependentUpon>201607130849082_qteProduit.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
