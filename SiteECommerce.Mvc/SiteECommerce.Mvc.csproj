@@ -97,6 +97,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IdentityModel" />
     <Reference Include="System.IO" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -172,6 +173,14 @@
     <Compile Include="Migrations\201607111509326_RemoveCategorie.cs" />
     <Compile Include="Migrations\201607111509326_RemoveCategorie.Designer.cs">
       <DependentUpon>201607111509326_RemoveCategorie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607121413223_SuiteClassMetier.cs" />
+    <Compile Include="Migrations\201607121413223_SuiteClassMetier.Designer.cs">
+      <DependentUpon>201607121413223_SuiteClassMetier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607121520324_migrationRectification.cs" />
+    <Compile Include="Migrations\201607121520324_migrationRectification.Designer.cs">
+      <DependentUpon>201607121520324_migrationRectification.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -264,6 +273,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201607111509326_RemoveCategorie.resx">
       <DependentUpon>201607111509326_RemoveCategorie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607121413223_SuiteClassMetier.resx">
+      <DependentUpon>201607121413223_SuiteClassMetier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607121520324_migrationRectification.resx">
+      <DependentUpon>201607121520324_migrationRectification.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

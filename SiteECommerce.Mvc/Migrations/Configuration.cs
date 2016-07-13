@@ -33,10 +33,16 @@ namespace SiteECommerce.Mvc.Migrations
             context.Marques.AddOrUpdate(m => m.NomMarque, dop, oreal, colgate);
 
             context.Produits.AddOrUpdate( p => p.NomProduit,
-            new Metier.Produit { NomProduit = "Savon", ImgProduit = "img", PrixProduit = 15, DescriptionProduit = "naturel", Marque = dop },
-            new Metier.Produit { NomProduit = "Shampoing", ImgProduit = "img", PrixProduit = 12, DescriptionProduit = "chimique", Marque = dop },
-            new Metier.Produit { NomProduit = "Gel Douche", ImgProduit = "img", PrixProduit = 16, DescriptionProduit = "chimique", Marque = oreal });
+            new Metier.Produit { NomProduit = "Savon", ImgProduit = "img", PrixProduit = 15, DescriptionProduit = "naturel", Marque = dop, CategorieId =1 },
+            new Metier.Produit { NomProduit = "Shampoing", ImgProduit = "img", PrixProduit = 12, DescriptionProduit = "chimique", Marque = dop, CategorieId = 1 },
+            new Metier.Produit { NomProduit = "Gel Douche", ImgProduit = "img", PrixProduit = 16, DescriptionProduit = "chimique", Marque = oreal, CategorieId = 1 });
 
+
+            var cosmetique = new Metier.Categorie { NomCategorie = "Cosmetique" };
+            var hygiene = new Metier.Categorie { NomCategorie = "Hygiene" };
+            var soin = new Metier.Categorie { NomCategorie = "Soin" };
+            context.Categories.AddOrUpdate(c => c.NomCategorie, cosmetique, hygiene, soin);
+            
 
         }
     }

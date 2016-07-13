@@ -11,106 +11,107 @@ using SiteECommerce.Metier;
 
 namespace SiteECommerce.Mvc.Controllers
 {
-    public class ProduitsController : Controller
+    public class CategoriesController : Controller
     {
         private SiteECommerceDbContext db = new SiteECommerceDbContext();
 
-        // GET: Produits
+        // GET: Categories
         public ActionResult Index()
         {
-            return View(db.Produits.ToList());
+            return View(db.Categories.ToList());
         }
 
-        // GET: Produits/Details/5
+        // GET: Categories/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Produit produit = db.Produits.Find(id);
-            if (produit == null)
+            Categorie categorie = db.Categories.Find(id);
+            if (categorie == null)
             {
                 return HttpNotFound();
             }
-            return View(produit);
+            return View(categorie);
         }
 
-        // GET: Produits/Create
+        // GET: Categories/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Produits/Create
+        // POST: Categories/Create
         // Afin de déjouer les attaques par sur-validation, activez les propriétés spécifiques que vous voulez lier. Pour 
         // plus de détails, voir  http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdProduit,NomProduit,ImgProduit,PrixProduit,DescriptionProduit")] Produit produit)
+        public ActionResult Create([Bind(Include = "IdCategorie,NomCategorie")] Categorie categorie)
         {
             if (ModelState.IsValid)
             {
-                db.Produits.Add(produit);
+                db.Categories.Add(categorie);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(produit);
+            return View(categorie);
         }
 
-        // GET: Produits/Edit/5
+        // GET: Categories/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Produit produit = db.Produits.Find(id);
-            if (produit == null)            {
+            Categorie categorie = db.Categories.Find(id);
+            if (categorie == null)
+            {
                 return HttpNotFound();
             }
-            return View(produit);
+            return View(categorie);
         }
 
-        // POST: Produits/Edit/5
+        // POST: Categories/Edit/5
         // Afin de déjouer les attaques par sur-validation, activez les propriétés spécifiques que vous voulez lier. Pour 
         // plus de détails, voir  http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdProduit,NomProduit,ImgProduit,PrixProduit,DescriptionProduit")] Produit produit)
+        public ActionResult Edit([Bind(Include = "IdCategorie,NomCategorie")] Categorie categorie)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(produit).State = EntityState.Modified;
+                db.Entry(categorie).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(produit);
+            return View(categorie);
         }
 
-        // GET: Produits/Delete/5
+        // GET: Categories/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Produit produit = db.Produits.Find(id);
-            if (produit == null)
+            Categorie categorie = db.Categories.Find(id);
+            if (categorie == null)
             {
                 return HttpNotFound();
             }
-            return View(produit);
+            return View(categorie);
         }
 
-        // POST: Produits/Delete/5
+        // POST: Categories/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Produit produit = db.Produits.Find(id);
-            db.Produits.Remove(produit);
+            Categorie categorie = db.Categories.Find(id);
+            db.Categories.Remove(categorie);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
