@@ -19,11 +19,11 @@ namespace SiteECommerce.Metier
         public string DescriptionProduit { get; set; }
 
         [ForeignKey("Marque")]
-        public int MarqueId;
+        public int IdMarque;
         public virtual Marque Marque { get; set; }
 
         [ForeignKey("Categorie")]
-        public int CategorieId;
+        public int IdCategorie;
         public virtual Categorie Categorie { get; set; }
 
         [ForeignKey("Fournisseur")]

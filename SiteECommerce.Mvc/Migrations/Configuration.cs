@@ -30,6 +30,7 @@ namespace SiteECommerce.Mvc.Migrations
             var dop = new Metier.Marque { NomMarque = "Dop" };
             var oreal = new Metier.Marque { NomMarque = "L'oreal" };
             var colgate = new Metier.Marque { NomMarque = "Colgate" };
+            var axe = new Metier.Marque { NomMarque = "Axe" };
             context.Marques.AddOrUpdate(m => m.NomMarque, dop, oreal, colgate);
 
             var cosmetique = new Metier.Categorie { NomCategorie = "Cosmetique" };
@@ -37,10 +38,13 @@ namespace SiteECommerce.Mvc.Migrations
             var soin = new Metier.Categorie { NomCategorie = "Soin" };
             context.Categories.AddOrUpdate(c => c.NomCategorie, cosmetique, hygiene, soin);
 
-            context.Produits.AddOrUpdate( p => p.NomProduit,
-            new Metier.Produit { NomProduit = "Savon", ImgProduit = "img", PrixProduit = 15, DescriptionProduit = "naturel", Marque = dop, Categorie =cosmetique },
-            new Metier.Produit { NomProduit = "Shampoing", ImgProduit = "img", PrixProduit = 12, DescriptionProduit = "chimique", Marque = dop, Categorie = cosmetique },
-            new Metier.Produit { NomProduit = "Gel Douche", ImgProduit = "img", PrixProduit = 16, DescriptionProduit = "chimique", Marque = oreal, Categorie = cosmetique });
+            context.SaveChanges();
+
+            var savon = new Metier.Produit { NomProduit = "Savon", ImgProduit = "img", PrixProduit = 15, DescriptionProduit = "naturel", IdMarque = 1, IdCategorie = 1 };
+            var shampoing = new Metier.Produit { NomProduit = "Shampoing", ImgProduit = "img", PrixProduit = 12, DescriptionProduit = "chimique", IdMarque = 2, IdCategorie = 2 };
+            var deodorant = new Metier.Produit { NomProduit = "Deodorant", ImgProduit = "img", PrixProduit = 5, DescriptionProduit = "chimique", IdMarque = 3, IdCategorie = 2 };
+            var gel_douche = new Metier.Produit { NomProduit = "Gel Douche", ImgProduit = "img", PrixProduit = 16, DescriptionProduit = "chimique", IdMarque = 4, IdCategorie = 3 };
+            context.Produits.AddOrUpdate(p => p.NomProduit, savon, shampoing, deodorant, gel_douche);
 
 
            
