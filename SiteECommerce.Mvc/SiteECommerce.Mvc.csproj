@@ -184,6 +184,10 @@
     <Compile Include="Migrations\201607121520324_migrationRectification.Designer.cs">
       <DependentUpon>201607121520324_migrationRectification.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201607130855265_Commentaire.cs" />
+    <Compile Include="Migrations\201607130855265_Commentaire.Designer.cs">
+      <DependentUpon>201607130855265_Commentaire.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -291,6 +295,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201607121520324_migrationRectification.resx">
       <DependentUpon>201607121520324_migrationRectification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607130855265_Commentaire.resx">
+      <DependentUpon>201607130855265_Commentaire.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
