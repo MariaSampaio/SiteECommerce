@@ -13,15 +13,14 @@ namespace SiteECommerce.Metier
         [Key]
         public int Id { get; set; }
         public int Quantite { get; set; }
-        public decimal prixTotal { get; set; }
-        public Client Clients { get; set; }
+        public decimal PrixTotal { get; set; }
 
         [ForeignKey("Client")]
-        public int IdClient;
+        public int IdClient { get; set; }
         public virtual Client Client { get; set; }
 
 
-        public ICollection<Produit> Produits { get; set; }
+        public virtual ICollection<Produit> Produits { get; set; }
    
 
         

@@ -14,11 +14,11 @@ namespace SiteECommerce.Metier
         public string Texte { get; set; }
 
         [ForeignKey("Client")]
-        public int idClient;
-        public virtual Client Clients { get; set; }
+        public int IdClient { get; set; }
+        public virtual Client Client { get; set; }
       
         [ForeignKey("Produit")]
-        public int IdProduit;
-        public virtual Produit Produits { get; set; }
+        public int IdProduit { get; set; }
+        public virtual Produit Produit { get; set; }
     }
 }

@@ -10,7 +10,7 @@ namespace SiteECommerce.Metier
     {
        
         public string MoyenPaiement { get; set; }
-        public bool paiementValid { get; set; }
+        public bool PaiementValid { get; set; }
 
     }
 }
