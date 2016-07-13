@@ -67,8 +67,7 @@ namespace SiteECommerce.Mvc.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Produit produit = db.Produits.Find(id);
-            if (produit == null)
-            {
+            if (produit == null)            {
                 return HttpNotFound();
             }
             return View(produit);

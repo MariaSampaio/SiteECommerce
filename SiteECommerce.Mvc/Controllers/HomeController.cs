@@ -15,14 +15,14 @@ namespace SiteECommerce.Mvc.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "A Propos";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Retrouvez-nous";
 
             return View();
         }
