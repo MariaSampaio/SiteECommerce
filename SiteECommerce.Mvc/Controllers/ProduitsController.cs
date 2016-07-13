@@ -67,10 +67,19 @@ namespace SiteECommerce.Mvc.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Produit produit = db.Produits.Find(id);
-            if (produit == null)            {
+            CreateMarqueList(produit.Marque.IdMarque);
+            if (produit == null)
+            {
                 return HttpNotFound();
             }
             return View(produit);
+        }
+
+        private void CreateMarqueList(int? marqueId)
+        {
+            var marques = from m in db.Marques
+                          select m;
+            ViewBag.MarqueID = new SelectList(marques, "IdMarque", "NomMarque", marqueId.Value);
         }
 
         // POST: Produits/Edit/5
@@ -78,7 +87,7 @@ namespace SiteECommerce.Mvc.Controllers
         // plus de détails, voir  http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdProduit,NomProduit,ImgProduit,PrixProduit,DescriptionProduit")] Produit produit)
+        public ActionResult Edit([Bind(Include = "IdProduit,NomProduit,ImgProduit,PrixProduit,DescriptionProduit, MarqueId")] Produit produit)
         {
             if (ModelState.IsValid)
             {
