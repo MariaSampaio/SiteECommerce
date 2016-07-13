@@ -17,6 +17,7 @@ namespace SiteECommerce.Metier
         public string ImgProduit { get; set; }
         public decimal PrixProduit { get; set; }
         public string DescriptionProduit { get; set; }
+        public int Quantite { get; set; }
 
         [ForeignKey("Marque")]
         public int MarqueId;
