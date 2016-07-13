@@ -38,9 +38,9 @@ namespace SiteECommerce.Mvc.Migrations
             context.Categories.AddOrUpdate(c => c.NomCategorie, cosmetique, hygiene, soin);
 
             context.Produits.AddOrUpdate( p => p.NomProduit,
-            new Metier.Produit { NomProduit = "Savon", ImgProduit = "img", PrixProduit = 15, DescriptionProduit = "naturel", Marque = dop, Categorie =cosmetique },
-            new Metier.Produit { NomProduit = "Shampoing", ImgProduit = "img", PrixProduit = 12, DescriptionProduit = "chimique", Marque = dop, Categorie = cosmetique },
-            new Metier.Produit { NomProduit = "Gel Douche", ImgProduit = "img", PrixProduit = 16, DescriptionProduit = "chimique", Marque = oreal, Categorie = cosmetique });
+            new Metier.Produit { NomProduit = "Savon", ImgProduit = "img", PrixProduit = 15, DescriptionProduit = "naturel", Quantite = 8, Marque = dop, Categorie =cosmetique },
+            new Metier.Produit { NomProduit = "Shampoing", ImgProduit = "img", PrixProduit = 12, DescriptionProduit = "chimique", Quantite = 9, Marque = dop, Categorie = cosmetique },
+            new Metier.Produit { NomProduit = "Gel Douche", ImgProduit = "img", PrixProduit = 16, DescriptionProduit = "chimique", Quantite = 10, Marque = oreal, Categorie = cosmetique });
 
 
            
