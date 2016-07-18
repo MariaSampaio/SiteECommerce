@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -15,9 +16,14 @@ namespace SiteECommerce.Metier
         public int IdProduit { get; set; }
         public string NomProduit { get; set; }
         public string ImgProduit { get; set; }
+
+        [DataType(DataType.Currency)]
         public decimal PrixProduit { get; set; }
+
         public string DescriptionProduit { get; set; }
-        public int Quantite { get; set; }
+
+        [Range(0,100000000)]
+         public int Quantite { get; set; }
 
         [Required]
         [ForeignKey("Marque")]

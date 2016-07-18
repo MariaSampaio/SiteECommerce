@@ -18,7 +18,8 @@ namespace SiteECommerce.Mvc.Controllers
         // GET: Produits
         public ActionResult Index()
         {
-            return View(db.Produits.ToList());
+            var produits = db.Produits.Include(p => p.Categorie).Include(p => p.Marque);
+            return View(produits.ToList());
         }
 
         // GET: Produits/Details/5
@@ -39,6 +40,8 @@ namespace SiteECommerce.Mvc.Controllers
         // GET: Produits/Create
         public ActionResult Create()
         {
+            ViewBag.IdCategorie = new SelectList(db.Categories, "IdCategorie", "NomCategorie");
+            ViewBag.IdMarque = new SelectList(db.Marques, "IdMarque", "NomMarque");
             return View();
         }
 
@@ -47,7 +50,7 @@ namespace SiteECommerce.Mvc.Controllers
         // plus de détails, voir  http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdProduit,NomProduit,ImgProduit,PrixProduit,DescriptionProduit")] Produit produit)
+        public ActionResult Create([Bind(Include = "IdProduit,NomProduit,ImgProduit,PrixProduit,DescriptionProduit,Quantite,IdMarque,IdCategorie")] Produit produit)
         {
             if (ModelState.IsValid)
             {
@@ -56,6 +59,8 @@ namespace SiteECommerce.Mvc.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.IdCategorie = new SelectList(db.Categories, "IdCategorie", "NomCategorie", produit.IdCategorie);
+            ViewBag.IdMarque = new SelectList(db.Marques, "IdMarque", "NomMarque", produit.IdMarque);
             return View(produit);
         }
 
@@ -67,19 +72,13 @@ namespace SiteECommerce.Mvc.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Produit produit = db.Produits.Find(id);
-            CreateMarqueList(produit.Marque.IdMarque);
             if (produit == null)
             {
                 return HttpNotFound();
             }
+            ViewBag.IdCategorie = new SelectList(db.Categories, "IdCategorie", "NomCategorie", produit.IdCategorie);
+            ViewBag.IdMarque = new SelectList(db.Marques, "IdMarque", "NomMarque", produit.IdMarque);
             return View(produit);
-        }
-
-        private void CreateMarqueList(int? marqueId)
-        {
-            var marques = from m in db.Marques
-                          select m;
-            ViewBag.MarqueID = new SelectList(marques, "IdMarque", "NomMarque", marqueId.Value);
         }
 
         // POST: Produits/Edit/5
@@ -87,7 +86,7 @@ namespace SiteECommerce.Mvc.Controllers
         // plus de détails, voir  http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdProduit,NomProduit,ImgProduit,PrixProduit,DescriptionProduit, MarqueId")] Produit produit)
+        public ActionResult Edit([Bind(Include = "IdProduit,NomProduit,ImgProduit,PrixProduit,DescriptionProduit,Quantite,IdMarque,IdCategorie")] Produit produit)
         {
             if (ModelState.IsValid)
             {
@@ -95,6 +94,8 @@ namespace SiteECommerce.Mvc.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.IdCategorie = new SelectList(db.Categories, "IdCategorie", "NomCategorie", produit.IdCategorie);
+            ViewBag.IdMarque = new SelectList(db.Marques, "IdMarque", "NomMarque", produit.IdMarque);
             return View(produit);
         }
 
