@@ -3,7 +3,7 @@ namespace SiteECommerce.Mvc.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Initial : DbMigration
+    public partial class initial : DbMigration
     {
         public override void Up()
         {
@@ -28,15 +28,12 @@ namespace SiteECommerce.Mvc.Migrations
                         Quantite = c.Int(nullable: false),
                         IdMarque = c.Int(nullable: false),
                         IdCategorie = c.Int(nullable: false),
-                        Idfournisseur = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.IdProduit)
                 .ForeignKey("dbo.Categories", t => t.IdCategorie, cascadeDelete: true)
-                .ForeignKey("dbo.Fournisseurs", t => t.Idfournisseur, cascadeDelete: true)
                 .ForeignKey("dbo.Marques", t => t.IdMarque, cascadeDelete: true)
                 .Index(t => t.IdMarque)
-                .Index(t => t.IdCategorie)
-                .Index(t => t.Idfournisseur);
+                .Index(t => t.IdCategorie);
             
             CreateTable(
                 "dbo.Commandes",
@@ -120,12 +117,26 @@ namespace SiteECommerce.Mvc.Migrations
                 .Index(t => t.Commande_Id)
                 .Index(t => t.Produit_IdProduit);
             
+            CreateTable(
+                "dbo.FournisseurProduits",
+                c => new
+                    {
+                        Fournisseur_Idfournisseur = c.Int(nullable: false),
+                        Produit_IdProduit = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => new { t.Fournisseur_Idfournisseur, t.Produit_IdProduit })
+                .ForeignKey("dbo.Fournisseurs", t => t.Fournisseur_Idfournisseur, cascadeDelete: true)
+                .ForeignKey("dbo.Produits", t => t.Produit_IdProduit, cascadeDelete: true)
+                .Index(t => t.Fournisseur_Idfournisseur)
+                .Index(t => t.Produit_IdProduit);
+            
         }
         
         public override void Down()
         {
             DropForeignKey("dbo.Produits", "IdMarque", "dbo.Marques");
-            DropForeignKey("dbo.Produits", "Idfournisseur", "dbo.Fournisseurs");
+            DropForeignKey("dbo.FournisseurProduits", "Produit_IdProduit", "dbo.Produits");
+            DropForeignKey("dbo.FournisseurProduits", "Fournisseur_Idfournisseur", "dbo.Fournisseurs");
             DropForeignKey("dbo.CommandeProduits", "Produit_IdProduit", "dbo.Produits");
             DropForeignKey("dbo.CommandeProduits", "Commande_Id", "dbo.Commandes");
             DropForeignKey("dbo.Commandes", "IdClient", "dbo.Clients");
@@ -133,15 +144,17 @@ namespace SiteECommerce.Mvc.Migrations
             DropForeignKey("dbo.Commentaires", "IdProduit", "dbo.Produits");
             DropForeignKey("dbo.Commentaires", "IdClient", "dbo.Clients");
             DropForeignKey("dbo.Produits", "IdCategorie", "dbo.Categories");
+            DropIndex("dbo.FournisseurProduits", new[] { "Produit_IdProduit" });
+            DropIndex("dbo.FournisseurProduits", new[] { "Fournisseur_Idfournisseur" });
             DropIndex("dbo.CommandeProduits", new[] { "Produit_IdProduit" });
             DropIndex("dbo.CommandeProduits", new[] { "Commande_Id" });
             DropIndex("dbo.Commentaires", new[] { "IdProduit" });
             DropIndex("dbo.Commentaires", new[] { "IdClient" });
             DropIndex("dbo.Commandes", new[] { "Client_Id" });
             DropIndex("dbo.Commandes", new[] { "IdClient" });
-            DropIndex("dbo.Produits", new[] { "Idfournisseur" });
             DropIndex("dbo.Produits", new[] { "IdCategorie" });
             DropIndex("dbo.Produits", new[] { "IdMarque" });
+            DropTable("dbo.FournisseurProduits");
             DropTable("dbo.CommandeProduits");
             DropTable("dbo.Marques");
             DropTable("dbo.Fournisseurs");
