@@ -33,6 +33,7 @@ namespace SiteECommerce.Metier
         [ForeignKey("Fournisseur")]
         public int Idfournisseur { get; set; }
         public virtual Fournisseur Fournisseur { get; set; }
+        //public virtual ICollection<Fournisseur> Fournisseurs { get; set; }
 
         public virtual ICollection<Commande> Commandes { get; set; }
 

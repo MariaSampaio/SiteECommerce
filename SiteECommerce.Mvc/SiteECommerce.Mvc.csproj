@@ -85,10 +85,6 @@
       <HintPath>..\packages\Microsoft.ApplicationInsights.2.1.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.AspNet.Mvc.Core, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.Mvc.Core.6.0.0-rc1-final\lib\net451\Microsoft.AspNet.Mvc.Core.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -175,6 +171,10 @@
     <Compile Include="Migrations\201607131507281_Initial.cs" />
     <Compile Include="Migrations\201607131507281_Initial.Designer.cs">
       <DependentUpon>201607131507281_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607180946154_plusieursFournisseur.cs" />
+    <Compile Include="Migrations\201607180946154_plusieursFournisseur.Designer.cs">
+      <DependentUpon>201607180946154_plusieursFournisseur.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -273,6 +273,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201607131507281_Initial.resx">
       <DependentUpon>201607131507281_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607180946154_plusieursFournisseur.resx">
+      <DependentUpon>201607180946154_plusieursFournisseur.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -17,6 +17,5 @@ namespace SiteECommerce.DAL
         public DbSet<Commande> Commandes { get; set; }
         public DbSet<Facture> Factures { get; set; }
         public DbSet<Commentaire> Commentaires { get; set; }
-      
     }
 }
