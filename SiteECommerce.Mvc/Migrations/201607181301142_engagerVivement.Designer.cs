@@ -7,13 +7,13 @@ namespace SiteECommerce.Mvc.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class configuration : IMigrationMetadata
+    public sealed partial class engagerVivement : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(configuration));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(engagerVivement));
         
         string IMigrationMetadata.Id
         {
-            get { return "201607130931393_configuration"; }
+            get { return "201607181301142_engagerVivement"; }
         }
         
         string IMigrationMetadata.Source

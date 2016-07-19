@@ -1,3 +1,5 @@
+using SiteECommerce.Metier;
+
 namespace SiteECommerce.Mvc.Migrations
 {
     using System;
@@ -27,25 +29,55 @@ namespace SiteECommerce.Mvc.Migrations
             //    );
             //
             context.Fournisseurs.AddOrUpdate(f => f.Idfournisseur,
-            new Metier.Fournisseur { Idfournisseur = 1, Nom = "valentin", Adresse = "13 rue des fleurs" }
-            );
+    new Fournisseur { Idfournisseur = 1, Nom = "valentin", Adresse = "13 rue des fleurs" }
+    );
 
-            var dop = new Metier.Marque { IdMarque = 1, NomMarque = "Dop" };
-            var oreal = new Metier.Marque { IdMarque = 2, NomMarque = "L'oreal" };
-            var colgate = new Metier.Marque { IdMarque = 3, NomMarque = "Colgate" };
+            var dop = new Marque { IdMarque = 1, NomMarque = "Dop" };
+            var oreal = new Marque { IdMarque = 2, NomMarque = "L'oreal" };
+            var colgate = new Marque { IdMarque = 3, NomMarque = "Colgate" };
             context.Marques.AddOrUpdate(m => m.IdMarque, dop, oreal, colgate);
 
-            var cosmetique = new Metier.Categorie { IdCategorie = 1, NomCategorie = "Cosmetique" };
-            var hygiene = new Metier.Categorie { IdCategorie = 2, NomCategorie = "Hygiene" };
-            var soin = new Metier.Categorie { IdCategorie = 3, NomCategorie = "Soin" };
+            var cosmetique = new Categorie { IdCategorie = 1, NomCategorie = "Cosmetique" };
+            var hygiene = new Categorie { IdCategorie = 2, NomCategorie = "Hygiene" };
+            var soin = new Categorie { IdCategorie = 3, NomCategorie = "Soin" };
             context.Categories.AddOrUpdate(c => c.IdCategorie, cosmetique, hygiene, soin);
 
             context.SaveChanges();
 
             context.Produits.AddOrUpdate(p => p.IdProduit,
-            new Metier.Produit { IdProduit = 1, NomProduit = "Savon", ImgProduit = "img", PrixProduit = 15, DescriptionProduit = "naturel", Quantite = 8, IdMarque = colgate.IdMarque, IdCategorie = cosmetique.IdCategorie, Idfournisseur = 1 },
-            new Metier.Produit { IdProduit = 2, NomProduit = "Shampoing", ImgProduit = "img", PrixProduit = 12, DescriptionProduit = "chimique", Quantite = 9, IdMarque = dop.IdMarque, IdCategorie = soin.IdCategorie, Idfournisseur = 1 },
-            new Metier.Produit { IdProduit = 3, NomProduit = "Gel Douche", ImgProduit = "img", PrixProduit = 16, DescriptionProduit = "chimique", Quantite = 10, IdMarque = oreal.IdMarque, IdCategorie = hygiene.IdCategorie, Idfournisseur = 1 });
+                new Produit
+                {
+                    IdProduit = 1,
+                    NomProduit = "Savon",
+                    ImgProduit = "img",
+                    PrixProduit = 15,
+                    DescriptionProduit = "naturel",
+                    Quantite = 8,
+                    IdMarque = colgate.IdMarque,
+                    IdCategorie = cosmetique.IdCategorie
+                },
+                new Produit
+                {
+                    IdProduit = 2,
+                    NomProduit = "Shampoing",
+                    ImgProduit = "img",
+                    PrixProduit = 12,
+                    DescriptionProduit = "chimique",
+                    Quantite = 9,
+                    IdMarque = dop.IdMarque,
+                    IdCategorie = soin.IdCategorie
+                },
+                new Produit
+                {
+                    IdProduit = 3,
+                    NomProduit = "Gel Douche",
+                    ImgProduit = "img",
+                    PrixProduit = 16,
+                    DescriptionProduit = "chimique",
+                    Quantite = 10,
+                    IdMarque = oreal.IdMarque,
+                    IdCategorie = hygiene.IdCategorie
+                });
         }
     }
 }
